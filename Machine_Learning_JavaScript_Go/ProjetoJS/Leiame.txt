@@ -1,0 +1,20 @@
+# Como executar a web app:
+
+1- Coloque os arquivos em uma pasta no seu computador (sem espaço no nome e sem acento).
+
+2- Abra o terminal ou prompt de comando e navegue até a pasta com os arquivos do projeto.
+
+Para executar em modo de desenvolvimento (testar a web app):
+
+Execute: npm install
+Execute: npm run dev
+
+Abra o navegador e acesse a web app em http://localhost:4500
+
+Para executar em modo de produção (deploy):
+
+Execute: npm install
+Execute: npm run build
+Execute: npm run start
+
+Abra o navegador e acesse a web app em http://localhost:4500

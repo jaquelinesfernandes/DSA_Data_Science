@@ -1,0 +1,82 @@
+# Trabalhando com Docker File System
+
+# 1- Bind Mount
+
+docker run -it --name exemplo1 --mount type=bind,source=/Users/dmpm/Downloads,target=/mnt/dsacademy ubuntu
+
+cd /mnt/dsacademy
+
+ls
+
+touch exemplo1.txt
+
+echo "Testando Docker File System no Container exemplo1" > exemplo1.txt
+
+exit
+
+docker run -it --name exemplo2 -v /Users/dmpm/Downloads:/mnt/dsacademy ubuntu
+
+cd /mnt/dsacademy
+
+ls
+
+touch exemplo2.txt
+
+echo "Testando Docker File System no Container exemplo2" > exemplo2.txt
+
+exit
+
+docker ps
+
+docker ps -a
+
+docker container start exemplo1
+
+docker container start exemplo2
+
+
+# 2- Volume
+
+docker volume create ds_academy
+
+docker volume list
+
+docker volume inspect ds_academy
+
+docker run -it --name=exemplo3 --mount source=ds_academy,destination=/mnt/dsacademy ubuntu
+
+cd /mnt/dsacademy
+
+touch exemplo3.txt
+
+echo "Testando Docker File System no Container exemplo3" > exemplo3.txt
+
+exit
+
+docker run -it --name=exemplo4 --mount source=ds_academy,destination=/mnt/dsacademy ubuntu
+
+cd /mnt/dsacademy
+
+ls
+
+touch exemplo4.txt
+
+echo "Testando Docker File System no Container exemplo4" > exemplo4.txt
+
+exit
+
+docker ps
+
+docker ps -a
+
+docker container start exemplo3
+
+docker container start exemplo4
+
+# Depois de deletar os containers, remova o volume:
+
+docker volume rm ds_academy
+
+
+
+

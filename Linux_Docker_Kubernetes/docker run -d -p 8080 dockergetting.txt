@@ -1,0 +1,6 @@
+docker run -d -p 80:80 docker/getting-started
+
+docker run -dt --name Lab1 ubuntu
+ls -la
+
+docker exec -it Lab1 /bin/bash

@@ -1,0 +1,87 @@
+# Lab 3 - Trabalhando em Rede com Docker e Linux
+
+
+# Listar as redes Docker
+
+docker network ls
+
+
+# Inspecionar o container 
+
+docker inspect Lab3C1
+
+
+# Cria um container
+
+docker run -dit --name Lab3C1 ubuntu
+
+
+# Extrair detalhes sobre a rede do container
+
+docker inspect Lab3C1 -f "{{json .NetworkSettings.Networks }}"
+
+
+# Inspecionar a rede de todos os containers ao mesmo tempo
+
+docker ps --format '{{ .ID }} {{ .Names }} {{ json .Networks }}'
+
+
+# Inspecionar a rede padrão bridge
+
+docker network inspect bridge
+
+
+# Criar uma rede
+
+docker network create rede_lab3
+
+
+# Criar um container e adicioná-lo à nova rede criada
+
+docker run -dit --network rede_lab3 --name Lab3C2 ubuntu
+
+
+# Inspecionar a rede de todos os containers ao mesmo tempo
+
+docker ps --format '{{ .ID }} {{ .Names }} {{ json .Networks }}'
+
+
+# Inspecionar o container 
+
+docker inspect Lab3C2
+
+
+# Instalar ferramentas de rede no container
+
+apt-get update
+apt-get install net-tools
+apt-get install iputils-ping
+
+ifconfig
+ping
+
+
+# Desconectar o container da rede atual
+
+docker network disconnect bridge Lab3C1
+
+
+# Conectar o container na rede desejada
+
+docker network connect rede_lab3 Lab3C1
+
+
+# Inspecionar a rede de todos os containers ao mesmo tempo
+
+docker ps --format '{{ .ID }} {{ .Names }} {{ json .Networks }}'
+
+
+# Extrair detalhes sobre a rede do container
+
+docker inspect Lab3C1 -f "{{json .NetworkSettings.Networks }}"
+
+
+# Inspecionar a rede 
+
+docker network inspect rede_lab3
+

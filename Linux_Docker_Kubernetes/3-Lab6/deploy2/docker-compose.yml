@@ -1,0 +1,55 @@
+version: '3'
+
+
+services:
+
+  dsa_database:
+    container_name: dsa_database
+    hostname: dsa_database
+    image: postgres
+    volumes:
+      - ./volume:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=dsadb
+      - POSTGRES_USER=alunodsa
+      - POSTGRES_PASSWORD=dsasenhasecretadsa
+    ports:
+      - 54321:5432
+    restart: unless-stopped
+    healthcheck:
+      test: "exit 0"
+
+
+  dsa_api:
+    container_name: dsa_api
+    hostname: dsa_api
+    build:
+      context: ./dsa_api
+      dockerfile: Dockerfile
+    ports:
+     - 54322:5000
+    volumes:
+      - ./dsa_api/src/:/usr/src/app/
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${DSA_ENVIRONMENT}
+    depends_on:
+      - dsa_database
+
+
+  dsa_webserver:
+      container_name: dsa_webserver
+      hostname: dsa_webserver
+      build:
+          context: ./dsa_webserver
+          dockerfile: Dockerfile
+      ports:
+        - 80:80
+      volumes:
+        - ./dsa_webserver/src/test:/usr/share/nginx/html
+      restart: always
+      depends_on:
+        - dsa_database
+
+        

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>App do Lab 5 - DSA</h2>
+
+<p id="lab"></p>
+
+<script>
+
+ var jsonfile = {{ jsonfile|tojson }};
+
+ var obj = JSON.parse(jsonfile);;
+
+document.getElementById("lab").innerHTML = obj;
+
+</script>
+
+</body>
+</html>

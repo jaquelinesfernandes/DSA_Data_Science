@@ -1,0 +1,25 @@
+# Lab 5 - Deploy de Aplicação Python com Linux e Docker
+
+# Obs: Você deve ter o Anaconda Python instalado localmente
+
+# Fonte do arquivo JSON: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
+
+
+# Parte 1 - Testar a app localmente
+
+pip install flask
+
+pip freeze > requirements.txt 
+
+flask run --host 0.0.0.0 --port 3000 
+
+
+# Parte 2 - Deploy da app no Docker
+
+docker build -t lab5-image:v1 .
+
+docker run -dit --name Lab5 -p 3000:3000 lab5-image:v1
+
+docker ps
+
+

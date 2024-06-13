@@ -1,0 +1,14 @@
+# Bash Scripting
+
+
+# Crie um container Docker mapeamento uma pasta local com os scripts Bash
+# ALTERE A PASTA PARA O LOCAL ADEQUADO NO SEU COMPUTADOR!!!
+docker run -dt --name Lab4 -v /Users/dmpm/Dropbox/DSA/LinuxDocker/Lab4:/mnt/dsacademy ubuntu
+
+
+# Execute o container docker com terminal bash na linha de comando
+docker exec -t -i Lab4 /bin/bash
+
+
+# Execute os scripts como mostrado nas aulas.
+
