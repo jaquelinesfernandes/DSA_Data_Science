@@ -12,3 +12,5 @@ docker exec -t -i Lab4 /bin/bash
 
 # Execute os scripts como mostrado nas aulas.
 
+C:\Users\User\Documents\DSA_Data_Science\Linux_Docker_Kubernetes\14-Lab4
+C:/Users/User/Documents/DSA_Data_Science/Linux_Docker_Kubernetes/14-Lab4
