@@ -1,0 +1,19 @@
+# Database Analytics com DuckDB
+
+# Instruções
+
+
+# Abra o terminal ou prompt de comando e navegue até a pasta onde você colocou os arquivos (não use espaço ou acento em nome de pasta)
+
+
+# Execute o comando abaixo para criar a imagem Docker
+
+docker build -t dsaduckdb:v1 .
+
+
+# Execute o comando abaixo para criar o container Docker
+
+docker run -dit --name dsa_duckdb -v ./dsaintro:/dsaintro -v ./dsaprojeto:/dsaprojeto dsaduckdb:v1 /bin/bash
+
+
+NOTA: No Windows você deve substituir ./dsaintro (por exemplo) pelo caminho completo da pasta, por exemplo: C:\DSA\DuckDB\dsaintro
